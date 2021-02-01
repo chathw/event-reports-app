@@ -19,25 +19,20 @@ DownloadButtonItems = function (refs, layout) {
                 layout = layout || uiManager.instanceManager.getStateCurrent();
                 var type = 'json';
                 var url = layout.req(null, type, false, true).url();
-                
+
                 var endpoint = "../cert/report/download/";
                 console.log("Calling endpoint", endpoint);
                 axios.post(endpoint, {
                     url
                 }).then(rsp => {
-                    console.log("Response",rsp);
-                    var blob = new Blob(rsp, { type: 'text/csv' });
-                    var link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = "report.csv";
-
-                    document.body.appendChild(link);
-
-                    link.click();
-
-                    document.body.removeChild(link);
+                    var hiddenElement = document.createElement('a');
+                    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(rsp.data);
+                    hiddenElement.target = '_blank';
+                    hiddenElement.download = 'report.csv';
+                    hiddenElement.click();
+                }).catch(err => {
+                    console.log("error in downloading csv file", err);
                 });
-                console.log("URL", layout, url);
             }
         },
         {
