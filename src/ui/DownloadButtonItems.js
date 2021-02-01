@@ -25,7 +25,8 @@ DownloadButtonItems = function (refs, layout) {
                 axios.post(endpoint, {
                     url
                 }).then(rsp => {
-                    var blob = new Blob([rsp], { type: 'application/pdf' });
+                    console.log("Response",rsp);
+                    var blob = new Blob(rsp, { type: 'text/csv' });
                     var link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
                     link.download = "report.csv";
