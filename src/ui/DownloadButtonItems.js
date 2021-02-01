@@ -19,8 +19,9 @@ DownloadButtonItems = function (refs, layout) {
                 layout = layout || uiManager.instanceManager.getStateCurrent();
                 var type = 'json';
                 var url = layout.req(null, type, false, true).url();
-
-                var endpoint = "../../cert/report/download/";
+                
+                var endpoint = "../cert/report/download/";
+                console.log("Calling endpoint", endpoint);
                 axios.post(endpoint, {
                     url
                 }).then(rsp => {
