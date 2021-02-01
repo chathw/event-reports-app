@@ -66,8 +66,8 @@
     "activities": {
       "dhis": {
         "href": "..",
-        "auth": "chathura:Test1234.",
-        "devHref": "http://135.181.131.10/test1/"
+        "auth": "",
+        "devHref": ""
       }
     }
   }
