@@ -20,7 +20,7 @@ DownloadButtonItems = function (refs, layout) {
                 var type = 'json';
                 var url = layout.req(null, type, false, true).url();
 
-                var endpoint = window.location.origin + "/cert/report/download/";
+                var endpoint = "../../cert/report/download/";
                 axios.post(endpoint, {
                     url
                 }).then(rsp => {
